@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://prashant-kumar-ahirwar.github.io/sitemap.xml
