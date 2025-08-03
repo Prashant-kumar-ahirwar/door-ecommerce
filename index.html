@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoorCraft - Premium Doors & Frames</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo h1 {
+            color: #fff;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f4f4f4, #e8e8e8);
+            padding: 120px 0 80px;
+            display: flex;
+            align-items: center;
+            min-height: 70vh;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h2 {
+            font-size: 3rem;
+            color: #8B4513;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            color: #fff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Shopkeeper Info Section */
+        .shopkeeper-section {
+            padding: 80px 0;
+            background: #fff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #8B4513;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+        }
+
+        .shopkeeper-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .shopkeeper-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .shopkeeper-info {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .shopkeeper-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .shopkeeper-details h3 {
+            color: #8B4513;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .business-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .info-item {
+            background: #f8f8f8;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #8B4513;
+        }
+
+        .info-item strong {
+            color: #8B4513;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+
+        .rating-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-btn.primary {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            color: #fff;
+        }
+
+        .contact-btn.secondary {
+            background: #fff;
+            color: #8B4513;
+            border: 2px solid #8B4513;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            color: #8B4513;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #A0522D;
+            margin: 1rem 0;
+        }
+
+        .buy-button {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .buy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c1810, #8B4513);
+            color: #fff;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #D2B48C;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #D2B48C;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            color: #ccc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: #8B4513;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h2 {
+                font-size: 2rem;
+            }
+
+            .shopkeeper-info {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .business-info {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #8B4513;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+         body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    h2 {
+      color: #4B2E1E;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #e0e0e0, #f8f8f8);
+      padding: 120px 20px 80px;
+      min-height: 70vh;
+      background-attachment: fixed;
+    }
+
+    .product-card:hover {
+      transform: scale(1.02);
+      transition: transform 0.3s ease;
+    }
+
+    .nav-menu {
+      position: fixed;
+      top: 70px;
+      left: -100%;
+      transition: left 0.3s ease;
+      background: #8B4513;
+      width: 80%;
+      height: 100vh;
+    }
+
+    .nav-menu.active {
+      left: 0;
+    }
+
+    .nav-menu-backdrop {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    .nav-menu.active + .nav-menu-backdrop {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h2 {
+        font-size: 1.6rem;
+      }
+    }
+
+    .testimonial-section {
+      background: #fff;
+      padding: 60px 20px;
+    }
+
+    .testimonial-section h2 {
+      text-align: center;
+      color: #8B4513;
+      margin-bottom: 2rem;
+    }
+
+    .testimonial-card {
+      background: #f0f0f0;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      margin: 1rem auto;
+      text-align: center;
+    }
+
+    .testimonial-card img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+    }
+
+    .testimonial-card .customer {
+      font-weight: bold;
+      color: #4B2E1E;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>DoorCraft</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#products" class="nav-link">Products</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero fade-in">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2>Premium Doors for Every Home</h2>
+                        <p>Connect with trusted local shopkeepers and discover our exclusive range of high-quality doors and frames that define luxury and style.</p>
+                        <a href="#products" class="cta-button">View Products</a>
+                    </div>
+                    <div class="hero-image">
+                        <img src="images/premium.png" alt="Premium Doors">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section id="products" class="shopkeeper-section" style="background: #f9f9f9;">
+            <div class="container">
+                <h2 class="section-title">Featured Products</h2>
+                <div class="product-grid">
+                    <div class="product-card fade-in">
+                        <img src="images/frames.jpg" alt="Premium Oak Door">
+                        <div class="product-info">
+                            <h3>साज की चौकहट (4x3 की मोटाई)</h3>
+                            <p>Solid oak construction with natural grain finish, perfect for luxury homes.</p>
+                            <!-- <div class="price">1500 Rs</div> -->
+                            <a href="#contact" class="buy-button">Contact Dealer</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card fade-in">
+                        <img src="images/simpleframes.png" alt="Security Steel Door">
+                        <div class="product-info">
+                            <h3>साज की चौकहट (5x3 की मोटाई)</h3>
+                            <p>Solid oak construction with natural grain finish, perfect for luxury homes.</p>
+                            <!-- <div class="price">2000 Rs</div> -->
+                            <a href="#contact" class="buy-button">Contact Dealer</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card fade-in">
+                        <img src="images/door.png" alt="Modern Door">
+                        <div class="product-info">
+                            <h3>Modern Door (डिज़ाइन पल्ला)</h3>
+                            <p>Solid oak construction with natural grain finish, perfect for luxury homes.</p>
+                            <!-- <div class="price">4000 Rs</div> -->
+                            <a href="#contact" class="buy-button">Contact Dealer</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card fade-in">
+                        <img src="images/m1.jpg" alt="Modern Door">
+                        <div class="product-info">
+                            <h3>Modern Door (डिज़ाइन पल्ला)</h3>
+                            <p>Solid oak construction with natural grain finish, perfect for luxury homes.</p>
+                            <!-- <div class="price">4000 Rs</div> -->
+                            <a href="#contact" class="buy-button">Contact Dealer</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card fade-in">
+                        <img src="images/m2.jpg" alt="Modern Door">
+                        <div class="product-info">
+                            <h3>Modern Door (डिज़ाइन पल्ला)</h3>
+                            <p>Solid oak construction with natural grain finish, perfect for luxury homes.</p>
+                            <!-- <div class="price">4000 Rs</div> -->
+                            <a href="#contact" class="buy-button">Contact Dealer</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card fade-in">
+                        <img src="images/olddoor1.jpg" alt="Custom Frame Set">
+                        <div class="product-info">
+                            <h3>old Door(सादा पल्ला)</h3>
+                            <p>Handcrafted wooden frames designed to perfectly complement your door choice.</p>
+                            <!-- <div class="price">2200 Rs</div> -->
+                            <a href="#contact" class="buy-button">Contact Dealer</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card fade-in">
+                        <img src="images/olddoor2.jpg" alt="Custom Frame Set">
+                        <div class="product-info">
+                            <h3>Custom doors and doorframes</h3>
+                            <p>Handcrafted wooden frames designed to perfectly complement your door choice.</p>
+                            <!-- <div class="price">to be set via call</div> -->
+                            <a href="#contact" class="buy-button">Contact Dealer</a>
+                        </div>
+                    </div>
+
+                    <div class="product-card fade-in">
+                        <img src="images/multi.png" alt="Custom Frame Set">
+                        <div class="product-info">
+                            <h3>Custom doors and doorframes</h3>
+                            <p>Handcrafted wooden frames designed to perfectly complement your door choice.</p>
+                            <!-- <div class="price">to be set via call</div> -->
+                            <a href="#contact" class="buy-button">Contact Dealer</a>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <img src="images/darvaja.jpg" alt="Custom Frame Set">
+                        <div class="product-info">
+                            <h3>old designed doors</h3>
+                            <p>Handcrafted wooden frames designed to perfectly complement your door choice.</p>
+                            <!-- <div class="price">to be set via call</div> -->
+                            <a href="#contact" class="buy-button">Contact Dealer</a>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <img src="images/khidki.jpg" alt="Custom Frame Set">
+                        <div class="product-info">
+                            <h3>window of (2.5 * 3 inches)</h3>
+                            <p>Handcrafted wooden frames designed to perfectly complement your door choice.</p>
+                            <!-- <div class="price">to be set via call</div> -->
+                            <a href="#contact" class="buy-button">Contact Dealer</a>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <img src="images/multiframes.png" alt="Custom Frame Set">
+                        <div class="product-info">
+                            <h3>Custom windows on different sizes and designes</h3>
+                            <p>Handcrafted wooden frames designed to perfectly complement your door choice.</p>
+                            <!-- <div class="price">to be set via call</div> -->
+                            <a href="#contact" class="buy-button">Contact Dealer</a>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <img src="images/pidhe.jpg" alt="Custom Frame Set">
+                        <div class="product-info">
+                            <h3>पीहड़े ( पीढे )</h3>
+                            <p>Handcrafted wooden frames designed to perfectly complement your door choice.</p>
+                            <!-- <div class="price">to be set via call</div> -->
+                            <a href="#contact" class="buy-button">Contact Dealer</a>
+                        </div>
+                    </div>
+                                        
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="shopkeeper-section">
+            <div class="container">
+                <h2 class="section-title">Get in Touch</h2>
+                <div class="shopkeeper-card fade-in">
+                    <div class="shopkeeper-info">
+                        <img src="images/profile.png" alt="Gyanilal Ahirwar" class="shopkeeper-image">
+                        <div class="shopkeeper-details">
+                            <h3>Gyanilal Ahirwar - Master Seller</h3>
+                            <p>Owner & Founder of the shop with over 15 years of experience in premium door manufacturing and installation.</p>
+                            
+                            <div class="business-info">
+                                <div class="info-item">
+                                    <strong>📍 Location:</strong>
+                                    Chindwara Chowk Seoni, (M.P.)
+                                </div>
+                                <div class="info-item">
+                                    <strong>📞 Phone:</strong>
+                                    9179058847
+                                </div>
+                                <div class="info-item">
+                                    <strong>⏰ Hours:</strong>  
+                                    Everyday : 10AM-7PM
+                                </div>
+                                <div class="info-item">
+                                    <strong>🏆 Specialization:</strong>
+                                    Wooden Doors, Custom Frames
+                                </div>
+                            </div>
+                            
+                            <div class="rating">
+                                <div class="stars">★★★★★</div>
+                                <span class="rating-text">4.9/5 (588 reviews)</span>
+                            </div>
+                            
+                            <div class="contact-buttons">
+                                <a href="tel:+9179058847" class="contact-btn primary">📞 Call Now</a>
+                                <a href="https://wa.me/9179058847" class="contact-btn secondary">💬 WhatsApp</a>
+                                <a href="mailto:ahirwargyani20@gmail.com" class="contact-btn secondary">📧 Email</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Testimonials Section -->
+        </section>
+          <section class="testimonial-section">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-card">
+            <img src="images/p1.png" alt="Customer 1" />
+            <p>"The quality of these doors exceeded my expectations. Durable, stylish, and perfectly fitted!"</p>
+            <div class="customer">– Rahul Sharma</div>
+            </div>
+            <div class="testimonial-card">
+            <img src="images/p2.png" alt="Customer 2" />
+            <p>"What a beautiful craftsmanship. Highly recommend DoorCraft!"</p>
+            <div class="customer">– Neha Verma</div>
+            </div>
+            <div class="testimonial-card">
+            <img src="images/profile.png" alt="Customer 3" />
+            <p>"I got custom wooden frames made for my new house, and they look premium. Worth every rupee."</p>
+            <div class="customer">– Sameer Khan</div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DoorCraft</h3>
+                    <p>Your trusted network of premium door dealers and craftsmen</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>For Dealers</h3>
+                    <ul>
+                        <li><a href="#">Join Our Network</a></li>
+                        <li><a href="#">Dealer Resources</a></li>
+                        <li><a href="#">Training Programs</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DoorCraft. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DoorCraft Website JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Navigation Toggle
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Active navigation link highlighting
+            function updateActiveNavLink() {
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Scroll animations
+            function animateOnScroll() {
+                const elements = document.querySelectorAll('.fade-in');
+                
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('fade-in');
+                    }
+                });
+            }
+
+            // Loading state for contact buttons
+            function addLoadingState() {
+                const contactButtons = document.querySelectorAll('.contact-btn');
+                
+                contactButtons.forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        if (this.href.startsWith('tel:') || this.href.startsWith('mailto:')) {
+                            const originalText = this.innerHTML;
+                            this.innerHTML = '<span class="loading"></span> Connecting...';
+                            
+                            setTimeout(() => {
+                                this.innerHTML = originalText;
+                            }, 2000);
+                        }
+                    });
+                });
+            }
+
+            // WhatsApp message formatting
+            function formatWhatsAppLinks() {
+                const whatsappLinks = document.querySelectorAll('a[href^="https://wa.me/"]');
+                
+                whatsappLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        const phoneNumber = this.href.split('/')[3];
+                        const message = "Hello! I'm interested in your door products and services. Could you please provide more information?";
+                        this.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                    });
+                });
+            }
+
+            // Product card interactions
+            function enhanceProductCards() {
+                const productCards = document.querySelectorAll('.product-card');
+                
+                productCards.forEach(card => {
+                    card.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-10px) scale(1.02)';
+                    });
+                    
+                    card.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0) scale(1)';
+                    });
+                });
+            }
+
+            // Shopkeeper card interactions
+            function enhanceShopkeeperCards() {
+                const shopkeeperCards = document.querySelectorAll('.shopkeeper-card');
+                
+                shopkeeperCards.forEach(card => {
+                    card.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-5px)';
+                        this.style.boxShadow = '0 15px 40px rgba(0,0,0,0.15)';
+                    });
+                    
+                    card.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0)';
+                        this.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+                    });
+                });
+            }
+
+            // Initialize all functionality
+            updateActiveNavLink();
+            addLoadingState();
+            formatWhatsAppLinks();
+            enhanceProductCards();
+            enhanceShopkeeperCards();
+            animateOnScroll();
+
+            // Event listeners
+            window.addEventListener('scroll', () => {
+                updateActiveNavLink();
+                animateOnScroll();
+            });
+
+            // Resize handler for mobile responsiveness
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+
+            // Add click tracking for analytics (placeholder)
+            document.addEventListener('click', function(e) {
+                if (e.target.matches('.cta-button, .buy-button, .contact-btn')) {
+                    console.log('Button clicked:', e.target.textContent.trim());
+                    // Add your analytics tracking code here
+                }
+            });
+
+            // Accessibility improvements
+            function improveAccessibility() {
+                // Add aria labels to interactive elements
+                const buttons = document.querySelectorAll('button, .contact-btn, .buy-button');
+                buttons.forEach(button => {
+                    if (!button.getAttribute('aria-label')) {
+                        button.setAttribute('aria-label', button.textContent.trim());
+                    }
+                });
+
+                // Add focus indicators
+                const focusElements = document.querySelectorAll('a, button, input, select');
+                focusElements.forEach(element => {
+                    element.addEventListener('focus', function() {
+                        this.style.outline = '2px solid #8B4513';
+                        this.style.outlineOffset = '2px';
+                    });
+                    
+                    element.addEventListener('blur', function() {
+                        this.style.outline = 'none';
+                    });
+                });
+            }
+
+            // Initialize accessibility and performance improvements
+            improveAccessibility();
+
+            // Add custom CSS for error states
+            const style = document.createElement('style');
+            style.textContent = `
+                .error {
+                    border-color: #ff4444 !important;
+                    background-color: #fff5f5 !important;
+                }
+                
+                .lazy {
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                }
+                
+                .lazy.loaded {
+                    opacity: 1;
+                }
+                
+                @media (prefers-reduced-motion: reduce) {
+                    * {
+                        animation-duration: 0.01ms !important;
+                        animation-iteration-count: 1 !important;
+                        transition-duration: 0.01ms !important;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+
+            console.log('DoorCraft website initialized successfully!');
+        });
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && ['u', 's', 'c'].includes(e.key.toLowerCase())) {
+            e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
